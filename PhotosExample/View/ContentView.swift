@@ -7,25 +7,40 @@
 //
 
 import SwiftUI
+import Photos
 
 struct ContentView: View {
+    @State var photoCollection: [UIImage]
+    
     var body: some View {
-        Text("Hello world")
+        VStack{
+            List(0..<photoCollection.count){
+                Text("dfsdf")
+                GridCell(photo: self.photoCollection[$0])
+            }
+        }
     }
 }
 
 
 // MARK: - Collection View
 struct GridCell: View{
+    @State var photo: UIImage
+    
     var body: some View {
-        Text("hhhh")
+        HStack{
+            Image(uiImage: photo)
+        }
     }
+    
 }
 
 #if DEBUG
 struct ContentView_Previews: PreviewProvider {
+    static let photoService = PhotoService()
+    
     static var previews: some View {
-        ContentView()
+        ContentView(photoCollection: photoService.imageArray!)
     }
 }
 #endif
