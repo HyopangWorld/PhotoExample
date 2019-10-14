@@ -7,4 +7,16 @@
 //
 
 import Foundation
+import UIKit
 
+struct Album {
+    var title: String?
+    var photos: Array<Photo>?
+    var image: UIImage?
+}
+
+struct Photo {
+    var image: UIImage?
+    var date: Date?
+    var heart: Bool?
+}

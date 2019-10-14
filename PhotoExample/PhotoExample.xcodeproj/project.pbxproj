@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2413E95423543C86009F0059 /* AlbumViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2413E95323543C86009F0059 /* AlbumViewModel.swift */; };
 		2435685B2352C39900B6C71B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2435685A2352C39900B6C71B /* AppDelegate.swift */; };
 		2435685D2352C39900B6C71B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2435685C2352C39900B6C71B /* SceneDelegate.swift */; };
 		2435685F2352C39900B6C71B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2435685E2352C39900B6C71B /* ViewController.swift */; };
@@ -36,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2413E95323543C86009F0059 /* AlbumViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumViewModel.swift; sourceTree = "<group>"; };
 		243568572352C39900B6C71B /* PhotoExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2435685A2352C39900B6C71B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2435685C2352C39900B6C71B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -78,6 +80,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2413E95223543C59009F0059 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				2413E95323543C86009F0059 /* AlbumViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		2435684E2352C39900B6C71B = {
 			isa = PBXGroup;
 			children = (
@@ -101,6 +111,7 @@
 		243568592352C39900B6C71B /* PhotoExample */ = {
 			isa = PBXGroup;
 			children = (
+				2413E95223543C59009F0059 /* ViewModel */,
 				2435688A2352C65300B6C71B /* View */,
 				2435688C2352C68600B6C71B /* Model */,
 				2435688D2352C69400B6C71B /* Delegate */,
@@ -297,6 +308,7 @@
 				2435688F2352C8DC00B6C71B /* Photo.swift in Sources */,
 				2435685F2352C39900B6C71B /* ViewController.swift in Sources */,
 				2435685B2352C39900B6C71B /* AppDelegate.swift in Sources */,
+				2413E95423543C86009F0059 /* AlbumViewModel.swift in Sources */,
 				2435685D2352C39900B6C71B /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
