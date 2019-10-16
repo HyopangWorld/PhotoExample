@@ -13,6 +13,8 @@ class AlbumViewController: UIViewController, PHPhotoLibraryChangeObserver {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var notiLabel: UILabel!
     
+    var ALBUM_SPACING: CGFloat = 16
+    
     var viewModel: PhotoViewModel? {
         didSet {
             guard let viewModel = viewModel else {
@@ -20,11 +22,13 @@ class AlbumViewController: UIViewController, PHPhotoLibraryChangeObserver {
             }
             viewModel.fetchResultDidChange = { [unowned self] viewModel in
                 OperationQueue.main.addOperation {
+                    self.notiLabel.isHidden = viewModel.albumCollection!.count > 0 ? true : false
                     self.collectionView.reloadData()
                 }
             }
         }
     }
+    var selectIndex: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,17 +59,27 @@ class AlbumViewController: UIViewController, PHPhotoLibraryChangeObserver {
         
         viewModel.albumCollection = changes.fetchResultAfterChanges
     }
+    
+    @objc func goPhotoVC(recognizer: UITapGestureRecognizer){
+        let location = recognizer.location(in: collectionView)
+        guard let indexPath = collectionView.indexPathForItem(at: location) else {
+            return
+        }
+        
+        let photoVC = self.storyboard?.instantiateViewController(withIdentifier: "PhotoViewController") as! PhotoViewController
+        photoVC.photos = PhotoService.shard.getPhotoCollection(index: indexPath.row)
+        
+        self.navigationController?.pushViewController(photoVC, animated: true)
+    }
 }
 
 
-extension AlbumViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
+extension AlbumViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         guard let albumCollection = viewModel?.albumCollection else {
-            notiLabel.isHidden = false
             return 0
         }
-        notiLabel.isHidden = albumCollection.count > 0 ? true : false
         
         return albumCollection.count
     }
@@ -98,15 +112,21 @@ extension AlbumViewController: UICollectionViewDelegate, UICollectionViewDataSou
         cell.title.text = album.localizedTitle
         cell.count.text = "\(album.estimatedAssetCount)"
         
+        cell.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(goPhotoVC)))
+        
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
+        return UIEdgeInsets(top: ALBUM_SPACING, left: ALBUM_SPACING, bottom: ALBUM_SPACING, right: ALBUM_SPACING)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return ALBUM_SPACING
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let cellSizeWidth = (view.frame.width - 16*3) / 2
+        let cellSizeWidth = (view.frame.width - ALBUM_SPACING*3) / 2
         return CGSize(width: cellSizeWidth, height: cellSizeWidth+50)
     }
 }

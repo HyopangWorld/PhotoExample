@@ -19,6 +19,7 @@
 		247CCBD523555DD900CB86DA /* PhotoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247CCBD423555DD900CB86DA /* PhotoService.swift */; };
 		247CCBD82355682D00CB86DA /* AlbumCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247CCBD72355682D00CB86DA /* AlbumCollectionViewCell.swift */; };
 		24EA8A112356DEDE009F2612 /* PHUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24EA8A102356DEDE009F2612 /* PHUtils.swift */; };
+		24EE69F62356E77700C67323 /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24EE69F52356E77700C67323 /* PhotoViewController.swift */; };
 		4123E2C7CACF2B5BF25D41A8 /* Pods_PhotoExample_PhotoExampleUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07A3E41FC6940E64E9028F43 /* Pods_PhotoExample_PhotoExampleUITests.framework */; };
 		5616EE20E57B99EA943A73A9 /* Pods_PhotoExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CE699BBDE374971F30E613B /* Pods_PhotoExample.framework */; };
 		770CBFE4DE67BE3CA9CDE2BC /* Pods_PhotoExampleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 611AF6103D193F1119385268 /* Pods_PhotoExampleTests.framework */; };
@@ -64,6 +65,7 @@
 		247CCBD423555DD900CB86DA /* PhotoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoService.swift; sourceTree = "<group>"; };
 		247CCBD72355682D00CB86DA /* AlbumCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumCollectionViewCell.swift; sourceTree = "<group>"; };
 		24EA8A102356DEDE009F2612 /* PHUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PHUtils.swift; sourceTree = "<group>"; };
+		24EE69F52356E77700C67323 /* PhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
 		56F364780835E6C2D9B32B88 /* Pods-PhotoExample-PhotoExampleUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoExample-PhotoExampleUITests.debug.xcconfig"; path = "Target Support Files/Pods-PhotoExample-PhotoExampleUITests/Pods-PhotoExample-PhotoExampleUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		611AF6103D193F1119385268 /* Pods_PhotoExampleTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PhotoExampleTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CE699BBDE374971F30E613B /* Pods_PhotoExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PhotoExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -165,6 +167,7 @@
 			children = (
 				247CCBD6235567FE00CB86DA /* Supporting View */,
 				2435685E2352C39900B6C71B /* AlbumViewController.swift */,
+				24EE69F52356E77700C67323 /* PhotoViewController.swift */,
 				243568602352C39900B6C71B /* Main.storyboard */,
 				243568652352C39A00B6C71B /* LaunchScreen.storyboard */,
 			);
@@ -444,6 +447,7 @@
 				2435685B2352C39900B6C71B /* AppDelegate.swift in Sources */,
 				2413E95423543C86009F0059 /* PhotoViewModel.swift in Sources */,
 				2435685D2352C39900B6C71B /* SceneDelegate.swift in Sources */,
+				24EE69F62356E77700C67323 /* PhotoViewController.swift in Sources */,
 				24EA8A112356DEDE009F2612 /* PHUtils.swift in Sources */,
 				247CCBD523555DD900CB86DA /* PhotoService.swift in Sources */,
 			);

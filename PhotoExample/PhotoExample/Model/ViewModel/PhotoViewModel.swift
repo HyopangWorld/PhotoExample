@@ -20,13 +20,9 @@ class PhotoViewModel: PhotoViewModelProtocol {
             self.fetchResultDidChange?(self)
         }
     }
-//    var photo: PHFetchResult<PHAsset>? {
-//        didSet{
-//            self.fetchResultDidChange?(self)
-//        }
-//    }
     
     var fetchResultDidChange: ((PhotoViewModelProtocol) -> ())?
 
+    
 }
 

@@ -21,11 +21,7 @@ class PHUtils {
         image.draw(in: rect)
         new_image = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
-//
-//        let crop = CGRect(x: 0, y: 0, width: w, height: h)
-//        let cgImage = image.cgImage!.cropping(to: crop)
-//
-//        return UIImage(cgImage: cgImage!, scale: 1, orientation: image.imageOrientation)
+        
         return new_image
     }
 }
