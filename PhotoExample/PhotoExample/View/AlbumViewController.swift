@@ -11,6 +11,7 @@ import Photos
 
 class AlbumViewController: UIViewController, PHPhotoLibraryChangeObserver {
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var notiLabel: UILabel!
     
     var viewModel: PhotoViewModel? {
         didSet {
@@ -61,8 +62,10 @@ extension AlbumViewController: UICollectionViewDelegate, UICollectionViewDataSou
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         guard let albumCollection = viewModel?.albumCollection else {
+            notiLabel.isHidden = false
             return 0
         }
+        notiLabel.isHidden = albumCollection.count > 0 ? true : false
         
         return albumCollection.count
     }
@@ -74,20 +77,24 @@ extension AlbumViewController: UICollectionViewDelegate, UICollectionViewDataSou
             return cell
         }
         
-        guard let asset = PhotoService.shard.getPhotoCollection(index: indexPath.row)?.firstObject else {
-            return cell
+        let imageWidth = cell.frame.width
+        if let asset = PhotoService.shard.getPhotoCollection(index: indexPath.row)?.lastObject {
+            PhotoService.shard.imageManager.requestImage(for: asset,
+                                                         targetSize: CGSize(width: imageWidth, height: imageWidth),
+                                                         contentMode: .aspectFill,
+                                                         options: nil,
+                                                         resultHandler: { image, _ in
+                                                         cell.photo.image = PHUtils().resizeImage(w: imageWidth, h: imageWidth, image: image!)
+            })
+        }
+        else {
+            guard let defaultImage = UIImage(named: "Icon-40.png") else {
+                return cell
+            }
+            cell.photo.image = PHUtils().resizeImage(w: imageWidth, h: imageWidth, image: defaultImage)
         }
         
-        let imageWidth = cell.frame.size.width - 16*3
-        PhotoService.shard.imageManager.requestImage(for: asset,
-                                                     targetSize: CGSize(width: imageWidth, height: imageWidth),
-                                                     contentMode: .aspectFill,
-                                                     options: nil,
-                                                     resultHandler: { image, _ in
-                                                        cell.photo.image = image
-        })
-        
-        cell.photo.layer.cornerRadius = imageWidth / 10
+        cell.photo.layer.cornerRadius = CGFloat(imageWidth / 30)
         cell.title.text = album.localizedTitle
         cell.count.text = "\(album.estimatedAssetCount)"
         

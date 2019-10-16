@@ -44,7 +44,7 @@ final class PhotoService {
     }
     
     func getAlbumCollection() -> PHFetchResult<PHAssetCollection>? {
-        return PHAssetCollection.fetchAssetCollections(with: .smartAlbum, subtype: .smartAlbumUserLibrary, options: nil)
+        return PHAssetCollection.fetchAssetCollections(with: .album, subtype: .smartAlbumUserLibrary, options: nil)
     }
     
     func getPhotoCollection(index: Int) -> PHFetchResult<PHAsset>? {
